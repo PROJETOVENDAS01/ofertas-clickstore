@@ -405,7 +405,7 @@ html[data-tema="escuro"] .grain{opacity:.05}
 <section class="sec" style="padding-top:0"><div class="wrap">
   <div class="follow" data-r>
     <h2>Não perca a oferta do dia</h2>
-    <p>Entre na lista do WhatsApp ou siga no Instagram. Comente "QUERO" num post e o link chega na sua conversa.</p>
+    <p>Siga no Instagram e comente "EU QUERO" num post: o link chega no seu direct.</p>
     <div class="cta-row">
       <a class="btn btn-dark" data-wa href="#">Entrar no WhatsApp</a>
       <a class="btn btn-line" href="https://www.instagram.com/ofertasclickstore/">Seguir no Instagram</a>
@@ -493,7 +493,8 @@ const PROVA = {
 /* ===== fim dos dados ===== */
 
 if(!PROTOTIPO) document.getElementById('proto').hidden = true;
-document.querySelectorAll('[data-wa]').forEach(a=>a.href=WHATSAPP);
+// sem lista do WhatsApp ainda: esconde os botões em vez de levar a lugar nenhum
+document.querySelectorAll('[data-wa]').forEach(a=>{ if(WHATSAPP==='#') a.hidden=true; else a.href=WHATSAPP; });
 
 let atual = 'todas';
 const cats = document.getElementById('cats'), filters = document.getElementById('filters'), grid = document.getElementById('grid');
