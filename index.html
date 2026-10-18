@@ -288,6 +288,7 @@ html[data-tema="escuro"] .grain{opacity:.05}
 .card .im.ai{background:#020617}
 .card .im.ai img{object-fit:contain;transform:scale(1.18)}
 .card:hover .im.ai img{transform:scale(1.24)}
+.card .im.pro img{object-fit:cover}/* foto pro já gerada em 4:3, igual ao card: nada é cortado */
 .card .im.foto{background:#fff}
 .card .im.foto img{object-fit:contain;padding:12px}
 .val{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
@@ -505,11 +506,11 @@ const PRODUTOS = [
    link:'https://www.magazinevoce.com.br/magazineofertaclickstore/aspirador-agua-e-po-electrolux-1400w-sopro-11l-aqp20/p/085865600/ep/elau/'},
   // Lote Mercado Livre 18/10/2026: foto oficial do anúncio; preço e % OFF vistos na Central de Afiliados
   {nome:'Bicicleta Ergométrica Spinning 6kg Inércia',cat:'casa',loja:'Mercado Livre',desc:'Treino em casa com roda de inércia de 6kg. Mais de 50 mil vendidos. Preço no Pix.',
-   img:'https://http2.mlstatic.com/D_Q_NP_2X_745785-MLA114987927277_072026-AB.webp',preco:460.74,de:1094,queda:57,tag:'Mais vendido',link:'https://meli.la/2cUsze9'},
+   img:'midia/site/bike.webp',pro:1,preco:460.74,de:1094,queda:57,tag:'Mais vendido',link:'https://meli.la/2cUsze9'},
   {nome:'Escorredor de Pratos Suspenso 65cm 18 peças',cat:'cozinha',loja:'Mercado Livre',desc:'Fica sobre a pia e libera a bancada. Preto, com 18 peças.',
-   img:'https://http2.mlstatic.com/D_Q_NP_2X_645073-MLB114013970360_072026-AB.webp',preco:139.30,de:384.62,queda:63,link:'https://meli.la/14SRccK'},
+   img:'midia/site/escorredor.webp',pro:1,preco:139.30,de:384.62,queda:63,link:'https://meli.la/14SRccK'},
   {nome:'Espelho Orgânico Lopazzi 70x90 Polido',cat:'casa',loja:'Mercado Livre',desc:'Formato orgânico que está em alta na decoração. Mais de 5 mil vendidos.',
-   img:'https://http2.mlstatic.com/D_Q_NP_2X_905976-MLA116941277356_092026-AB.webp',preco:78.99,de:112.90,queda:30,link:'https://meli.la/2yp6XBM'},
+   img:'midia/site/espelho.webp',pro:1,preco:78.99,de:112.90,queda:30,link:'https://meli.la/2yp6XBM'},
   {nome:'Capa de Chuva Pet Emborrachada Porte Grande',cat:'pet',loja:'Mercado Livre',desc:'Para cães grandes como golden. Passeio sem lama e sem cachorro molhado. Preço no Pix.',
    img:'https://http2.mlstatic.com/D_Q_NP_2X_856132-MLB118332902057_092026-AB.webp',preco:94.05,de:99,queda:5,link:'https://meli.la/1v7DMwi'},
   {nome:'Jogo 6 Xícaras de Porcelana 170ml Amarelo',cat:'cozinha',loja:'Mercado Livre',desc:'Para café e chá, com pires. Um presente que sempre agrada.',
@@ -534,9 +535,9 @@ const PRODUTOS = [
   {nome:'Macaquinho Fitness Alcinha Costas Abertas',cat:'beleza',loja:'Shopee',desc:'Tecido sem transparência, para treino e dia a dia. Mais de 10 mil vendas.',
    img:'https://down-bs-br.img.susercontent.com/br-11134207-820lm-mmj2atq4ltdz52.webp',preco:39.99,link:'https://s.shopee.com.br/113maG3wt8'},
   {nome:'Caixa de Areia Fechada Antiodor Durapets',cat:'pet',loja:'Shopee',desc:'Banheiro fechado: menos cheiro e menos areia espalhada. Mais de 20 mil vendas.',
-   img:'https://down-bs-br.img.susercontent.com/br-11134207-820lk-mnug78q4q490e0.webp',preco:53.99,tag:'Mais vendido',link:'https://s.shopee.com.br/5AtLXvRkWm'},
+   img:'midia/site/caixa-areia.webp',pro:1,preco:53.99,tag:'Mais vendido',link:'https://s.shopee.com.br/5AtLXvRkWm'},
   {nome:'Fonte de Água para Gatos com Sensor 2,6L',cat:'pet',loja:'Shopee',desc:'Água sempre corrente e filtrada. O sensor liga quando o gato chega.',
-   img:'https://down-bs-br.img.susercontent.com/sg-11134201-7rdyd-lxi37dnh71qe09.webp',preco:151.95,link:'https://s.shopee.com.br/1BNCmaGFEV'},
+   img:'midia/site/fonte-gato.webp',pro:1,preco:151.95,link:'https://s.shopee.com.br/1BNCmaGFEV'},
   {nome:'Caminha Casinha Pet GG para Cães e Gatos',cat:'pet',loja:'Shopee',desc:'Toca macia tamanho GG. Mais de 10 mil vendas.',
    img:'https://down-bs-br.img.susercontent.com/br-11134207-81ztc-mivnw76gufwia0.webp',preco:69.99,link:'https://s.shopee.com.br/4LKEYPdJn5'},
   {nome:'Bolsa Canguru de Transporte Pet',cat:'pet',loja:'Shopee',desc:'Leve o pet junto ao corpo no passeio. A moda que viralizou nas redes.',
@@ -584,7 +585,7 @@ const preco = p => (p.queda||p.menor30) ? `<div class="drop">${p.queda?`<b>↓ $
 const clq = p => (p.cliques||0)>=M.cliques ? `<div class="clicks"><i></i><b>${fmt(p.cliques)}</b> pessoas clicaram hoje</div>` : '';
 const brl = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const valor = p => p.preco ? `<div class="val">${p.de?`<s>${brl(p.de)}</s>`:''}<b>${brl(p.preco)}</b></div>` : `<div class="val"><b class="sm">Veja o preço na ${p.loja}</b></div>`;
-grid.innerHTML = PRODUTOS.map(p=>`<article class="card" data-cat="${p.cat}"><div class="im${p.ai?' ai':p.img?' foto':''}"><img alt="${p.nome}" loading="lazy" src="${p.img||IMG[p.cat]}" onerror="this.onerror=null;this.src=IMG['${p.cat}'];this.parentNode.classList.remove('foto')"><span class="store">${p.loja}</span>${p.tag?`<span class="tag">${p.tag}</span>`:''}${selo(p)}</div><div class="bd"><h3>${p.nome}</h3>${valor(p)}${preco(p)}<p>${p.desc}</p>${clq(p)}<a class="btn btn-main" href="${p.link}" rel="sponsored noopener" target="_blank">Ver na loja</a></div></article>`).join('');
+grid.innerHTML = PRODUTOS.map(p=>`<article class="card" data-cat="${p.cat}"><div class="im${p.pro?' pro':p.ai?' ai':p.img?' foto':''}"><img alt="${p.nome}" loading="lazy" src="${p.img||IMG[p.cat]}" onerror="this.onerror=null;this.src=IMG['${p.cat}'];this.parentNode.classList.remove('foto')"><span class="store">${p.loja}</span>${p.tag?`<span class="tag">${p.tag}</span>`:''}${selo(p)}</div><div class="bd"><h3>${p.nome}</h3>${valor(p)}${preco(p)}<p>${p.desc}</p>${clq(p)}<a class="btn btn-main" href="${p.link}" rel="sponsored noopener" target="_blank">Ver na loja</a></div></article>`).join('');
 if(!CUPONS.length){document.getElementById('cupons').hidden=true;document.querySelectorAll('a[href="#cupons"]').forEach(a=>a.hidden=true);}
 document.getElementById('cp').innerHTML = CUPONS.map(c=>`<div class="cp"${c.ate?` data-ate="${c.ate}"`:''}><small>${c.loja}</small><h3>${c.titulo}</h3>${c.ate?'<div class="timer">⏳ Termina em <b>--:--:--</b></div>':''}${c.codigo?`<div class="code"><span>${c.codigo}</span><button data-copy="${c.codigo}">Copiar</button></div>`:`<a class="btn btn-main" style="margin-top:.6rem" href="${c.link}" target="_blank" rel="noopener sponsored">Ativar no ${c.loja}</a>`}<p style="color:#aab6d3;font-size:.9rem">${c.nota}</p></div>`).join('');
 
