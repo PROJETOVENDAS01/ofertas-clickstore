@@ -377,7 +377,7 @@ html[data-tema="escuro"] .grain{opacity:.05}
   <div class="filters" id="filters" role="group" aria-label="Filtrar por categoria"></div>
   <div class="grid" id="grid"></div>
   <div class="todas-wrap" id="todas-wrap" hidden><button class="btn btn-main todas-btn" id="todas-btn">Ver todas as categorias</button></div>
-  <p class="aviso-preco">Preços vistos nas lojas em 17/10 às 18h. Eles mudam a qualquer hora: o valor que vale é o da tela da loja.</p>
+  <p class="aviso-preco">Preços vistos nas lojas em 18/10 às 3h. Eles mudam a qualquer hora: o valor que vale é o da tela da loja.</p>
 </div></section>
 
 <section class="sec coupons" id="cupons"><div class="wrap">
@@ -523,7 +523,30 @@ const PRODUTOS = [
   {nome:'Lanterna UV Luz Negra Ultravioleta',cat:'casa',loja:'Mercado Livre',desc:'Mostra manchas e sujeira que o olho não vê. Mais de 10 mil vendidos.',
    img:'https://http2.mlstatic.com/D_Q_NP_2X_883638-MLA104259209099_012026-AB.webp',preco:22.99,de:35.99,queda:36,link:'https://meli.la/2Dsmkdd'},
   {nome:'Fantasia Macacão Michael Myers Adulto',cat:'casa',loja:'Mercado Livre',desc:'Para a festa de Halloween (31/10). Confira o tamanho na loja.',
-   img:'https://http2.mlstatic.com/D_Q_NP_2X_683009-MLB78555968321_082024-AB.webp',preco:78.90,tag:'Halloween',link:'https://meli.la/2ReyVqz'}
+   img:'https://http2.mlstatic.com/D_Q_NP_2X_683009-MLB78555968321_082024-AB.webp',preco:78.90,tag:'Halloween',link:'https://meli.la/2ReyVqz'},
+  // Lote Shopee 18/10/2026: foto oficial do anúncio; preço visto na Central de Afiliados Shopee
+  {nome:'Parafusadeira e Furadeira 21V com 2 Baterias',cat:'casa',loja:'Shopee',desc:'Sem fio, com duas baterias para não parar no meio do serviço. Mais de 4 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/sg-11134201-824ij-mefom612h69td4.webp',preco:129.80,link:'https://s.shopee.com.br/1LgcyydzKJ'},
+  {nome:'Mini Power Bank 10000mAh com saída Tipo-C e Lightning',cat:'tech',loja:'Shopee',desc:'Carregador portátil que cabe no bolso. Mais de 10 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/sg-11134201-81zvk-mik9ovwbhszk62.webp',preco:31.99,link:'https://s.shopee.com.br/5q92L7d59e'},
+  {nome:'Creatina Monohidratada Pura 300g Dark Lab',cat:'beleza',loja:'Shopee',desc:'Creatina pura para treino. Mais de 100 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-820l8-ms0du9lcw8p1d3.webp',preco:39.90,tag:'Mais vendido',link:'https://s.shopee.com.br/8AWx7Q3XAa'},
+  {nome:'Macaquinho Fitness Alcinha Costas Abertas',cat:'beleza',loja:'Shopee',desc:'Tecido sem transparência, para treino e dia a dia. Mais de 10 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-820lm-mmj2atq4ltdz52.webp',preco:39.99,link:'https://s.shopee.com.br/113maG3wt8'},
+  {nome:'Caixa de Areia Fechada Antiodor Durapets',cat:'pet',loja:'Shopee',desc:'Banheiro fechado: menos cheiro e menos areia espalhada. Mais de 20 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-820lk-mnug78q4q490e0.webp',preco:53.99,tag:'Mais vendido',link:'https://s.shopee.com.br/5AtLXvRkWm'},
+  {nome:'Fonte de Água para Gatos com Sensor 2,6L',cat:'pet',loja:'Shopee',desc:'Água sempre corrente e filtrada. O sensor liga quando o gato chega.',
+   img:'https://down-bs-br.img.susercontent.com/sg-11134201-7rdyd-lxi37dnh71qe09.webp',preco:151.95,link:'https://s.shopee.com.br/1BNCmaGFEV'},
+  {nome:'Caminha Casinha Pet GG para Cães e Gatos',cat:'pet',loja:'Shopee',desc:'Toca macia tamanho GG. Mais de 10 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-81ztc-mivnw76gufwia0.webp',preco:69.99,link:'https://s.shopee.com.br/4LKEYPdJn5'},
+  {nome:'Bolsa Canguru de Transporte Pet',cat:'pet',loja:'Shopee',desc:'Leve o pet junto ao corpo no passeio. A moda que viralizou nas redes.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-820lu-mqqxy1wtko3kc9.webp',preco:25.60,link:'https://s.shopee.com.br/9zybIl61Y2'},
+  {nome:'Kit 2 Arranhadores de Canto Protetor de Sofá',cat:'pet',loja:'Shopee',desc:'O gato arranha o protetor, não o seu sofá. Mais de 20 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-7r98o-lnj2so8as97ta1.webp',preco:46.89,link:'https://s.shopee.com.br/9V2Khusi3n'},
+  {nome:'Kit 5 Tapetes Higiênicos Laváveis 80x60cm',cat:'pet',loja:'Shopee',desc:'Lava e usa de novo: economia no tapete descartável. Para cães.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-820m0-ms3ioumbflz907.webp',preco:60.06,link:'https://s.shopee.com.br/2VsaN3scm5'},
+  {nome:'Areia Higiênica Biodegradável Catbio 12kg',cat:'pet',loja:'Shopee',desc:'3 pacotes de 4kg. Biodegradável e mais de 100 mil vendas.',
+   img:'https://down-bs-br.img.susercontent.com/br-11134207-81z1k-mdxnq2dguwht29.webp',preco:146.90,link:'https://s.shopee.com.br/9zybIr3o49'}
 ];
 // ate = quando o cupom acaba (data e hora que a loja informou). Sem "ate", não aparece relógio.
 const daqui = h => new Date(Date.now()+h*36e5).toISOString(); // shortcut: só para o protótipo; nos reais use '2026-10-20T23:59:00-03:00'
@@ -541,7 +564,7 @@ const PROVA = {
   whatsapp: 0,          // pessoas na lista do WhatsApp
   seguidores: 0,        // seguidores do @ofertasclickstore
   ofertas: null,         // ofertas novas hoje (conta sozinho se ficar null)
-  atualizado: '18h de 17/10',    // 'HH:MM' da última atualização; null = horário em que a página abriu
+  atualizado: '3h de 18/10',    // 'HH:MM' da última atualização; null = horário em que a página abriu
   minimo: {compras:100, whatsapp:300, seguidores:1000, cliques:20, semana:5}
 };
 /* ===== fim dos dados ===== */
