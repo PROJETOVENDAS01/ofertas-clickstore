@@ -199,6 +199,8 @@ footer b{color:#fff}
 .sf{position:absolute;inset:0;border-radius:38px;overflow:hidden;background:#000515;box-shadow:0 40px 70px -24px rgba(11,16,32,.6)}
 .sf img{width:100%;height:100%;display:block;object-fit:cover}
 .story:not(.pinned) .sf:not(:first-child){display:none}
+.story-go{text-align:center;margin-top:1.4rem}
+.story-go .btn{cursor:pointer;border:0;font-size:1.05rem}
 @media (max-width:980px){
   .story-pin{grid-template-columns:1fr;min-height:0}
   .story-frame{display:none}
@@ -364,7 +366,8 @@ html[data-tema="escuro"] .grain{opacity:.05}
       <h2>Tudo o que a sua casa e o seu dia pedem.</h2>
       <ul class="story-list" id="story-list"></ul>
     </div>
-    <div class="story-frame" id="story-frame" aria-hidden="true"></div>
+    <div class="story-side"><div class="story-frame" id="story-frame" aria-hidden="true"></div>
+    <div class="story-go"><button type="button" class="btn btn-main" id="story-go">Ir para essas ofertas →</button></div></div>
   </div>
 </div></section>
 
@@ -717,6 +720,12 @@ function glHero(){
   const lista=document.getElementById('story-list'), quadro=document.getElementById('story-frame');
   lista.innerHTML=CATS.map(([k,n],i)=>`<li class="${i?'':'on'}"><img class="thumb" alt="" src="${VIT[k]}"><b>${n}</b><p>${TEXTOS[k]}</p></li>`).join('');
   quadro.innerHTML=CATS.map(([k])=>`<div class="sf"><img alt="" src="${VIT[k]}"></div>`).join('');
+  const go=document.getElementById('story-go'); let catAtual=CATS[0][0];
+  const rotulo=()=>{go.textContent=`Ir para as ofertas de ${CATS.find(c=>c[0]===catAtual)[1]} →`}; rotulo();
+  const irOfertas=k=>{ if(atual!==k) filtrar(k); document.getElementById('ofertas').scrollIntoView({behavior:'smooth'}); };
+  go.onclick=()=>irOfertas(catAtual);
+  // no celular a imagem some: tocar na categoria já leva às ofertas dela
+  [...lista.children].forEach((li,k)=>li.addEventListener('click',()=>{ if(matchMedia('(max-width: 980px)').matches){catAtual=CATS[k][0]; rotulo(); irOfertas(catAtual);} }));
   gsap.matchMedia().add('(min-width: 981px)',()=>{
     {
       const root=document.querySelector('.story'), itens=[...lista.children], quadros=[...quadro.children];
@@ -727,7 +736,7 @@ function glHero(){
         if(i===atual) return;
         gsap.to(quadros[atual],{opacity:0,scale:1.08,rotate:4,duration:.5});
         gsap.fromTo(quadros[i],{opacity:0,scale:.88,rotate:-5},{opacity:1,scale:1,rotate:0,duration:.7,ease:'back.out(1.4)'});
-        itens[atual].classList.remove('on'); itens[i].classList.add('on'); atual=i;
+        itens[atual].classList.remove('on'); itens[i].classList.add('on'); atual=i; catAtual=CATS[i][0]; rotulo();
       };
       // troca sozinha a cada 4 s, só com a seção na tela e sem o mouse em cima; clique escolhe
       let visivel=false, parado=false;
