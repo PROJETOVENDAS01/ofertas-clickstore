@@ -1,0 +1,4 @@
+# arquivos de trabalho pesados dos Reels (o vídeo final fica em midia/)
+reels/**/*.mp4
+reels/**/*.mp3
+reels/**/*.jpg
